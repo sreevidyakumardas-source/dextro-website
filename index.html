@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080811">
+  <meta name="description" content="DEXTRO — thoughtful digital design, websites and practical AI solutions for growing businesses.">
+  <title>DEXTRO — Digital, designed to move you forward</title>
+  <style>
+    :root{
+      --bg:#080811;--panel:#10101d;--panel2:#141426;--text:#f5f4ff;
+      --muted:#aaa8c2;--purple:#9b6cff;--blue:#5a8cff;--line:rgba(255,255,255,.11);
+      --grad:linear-gradient(110deg,var(--purple),var(--blue));
+      --max:1160px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    a{color:inherit;text-decoration:none}
+    button,input,textarea,select{font:inherit}
+    .wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
+    .nav{position:sticky;top:0;z-index:20;background:rgba(8,8,17,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .navin{height:76px;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-size:1.45rem;font-weight:900;letter-spacing:.18em}
+    .brand span{color:var(--purple)}
+    .links{display:flex;align-items:center;gap:30px;color:#d0cee1;font-size:.94rem}
+    .links a:hover{color:#fff}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:999px;padding:13px 21px;background:var(--grad);color:white;font-weight:750;box-shadow:0 8px 28px rgba(119,91,255,.22);transition:transform .2s,filter .2s;cursor:pointer}
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+    .btn.ghost{background:transparent;border:1px solid var(--line);box-shadow:none}
+    .menu{display:none;background:none;border:1px solid var(--line);color:white;border-radius:10px;padding:8px 12px}
+    .hero{position:relative;overflow:hidden;padding:112px 0 100px}
+    .hero:before{content:"";position:absolute;width:620px;height:620px;right:-150px;top:-180px;background:radial-gradient(circle,rgba(115,75,255,.25),transparent 68%);pointer-events:none}
+    .hero:after{content:"";position:absolute;width:500px;height:500px;left:-250px;bottom:-320px;background:radial-gradient(circle,rgba(50,116,255,.17),transparent 68%);pointer-events:none}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;position:relative;z-index:1}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:#c5b6ff;border:1px solid rgba(155,108,255,.32);background:rgba(155,108,255,.08);padding:7px 12px;border-radius:999px;font-size:.78rem;font-weight:750;letter-spacing:.12em;text-transform:uppercase}
+    .dot{width:7px;height:7px;border-radius:50%;background:#9bffca;box-shadow:0 0 12px #9bffca}
+    h1{font-size:clamp(3rem,7vw,5.8rem);line-height:.99;letter-spacing:-.065em;margin:24px 0}
+    .gradient{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{font-size:1.12rem;color:var(--muted);max-width:590px}
+    .actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:32px}
+    .micro{margin-top:25px;color:#77758e;font-size:.85rem}
+    .visual{min-height:410px;position:relative;display:grid;place-items:center}
+    .orb{width:min(370px,78vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#b79bff 0,#7953ed 20%,#28205c 48%,#101022 72%);box-shadow:0 0 90px rgba(117,81,255,.3),inset -25px -35px 65px rgba(0,0,0,.55);position:relative}
+    .orb:before,.orb:after{content:"";position:absolute;inset:-24px;border:1px solid rgba(170,147,255,.35);border-radius:50%;transform:rotate(-25deg) scaleY(.38)}
+    .orb:after{inset:-55px;transform:rotate(38deg) scaleY(.38);border-color:rgba(89,145,255,.3)}
+    .float-card{position:absolute;background:rgba(20,20,39,.88);border:1px solid var(--line);border-radius:17px;padding:15px 18px;box-shadow:0 18px 55px rgba(0,0,0,.35);backdrop-filter:blur(12px)}
+    .float-card strong{display:block;font-size:1.2rem}.float-card small{color:var(--muted)}
+    .fc1{top:45px;left:0}.fc2{right:-5px;bottom:45px}
+    section{padding:88px 0}
+    .section-head{max-width:650px;margin-bottom:42px}
+    .kicker{color:#a98aff;font-size:.78rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+    h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;letter-spacing:-.045em;margin:12px 0}
+    .sub{color:var(--muted);margin:0}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:linear-gradient(145deg,rgba(24,24,44,.96),rgba(13,13,25,.96));border:1px solid var(--line);border-radius:20px;padding:27px;transition:transform .2s,border-color .2s}
+    .card:hover{transform:translateY(-5px);border-color:rgba(155,108,255,.5)}
+    .icon{width:48px;height:48px;display:grid;place-items:center;border-radius:14px;background:rgba(155,108,255,.13);color:#c6b2ff;font-size:1.35rem;margin-bottom:20px}
+    .card h3{margin:0 0 8px;font-size:1.2rem}.card p{color:var(--muted);margin:0}
+    .work{background:linear-gradient(180deg,transparent,rgba(28,22,55,.32),transparent)}
+    .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .project{overflow:hidden;border:1px solid var(--line);border-radius:20px;background:var(--panel)}
+    .project-art{height:190px;display:grid;place-items:center;padding:20px;position:relative;overflow:hidden}
+    .project-art:before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;filter:blur(2px);background:radial-gradient(circle,rgba(181,137,255,.55),transparent 68%)}
+    .mock{position:relative;border:1px solid rgba(255,255,255,.24);border-radius:12px;background:rgba(10,10,24,.76);width:82%;padding:15px;box-shadow:0 15px 35px #0007}
+    .mock-bar{height:6px;width:35%;border-radius:5px;background:#9d7aff;margin-bottom:14px}
+    .mock-line{height:7px;background:#5b5a7c;border-radius:5px;margin:8px 0;width:78%}
+    .mock-line.short{width:48%}
+    .mock-button{width:70px;height:19px;border-radius:20px;background:var(--grad);margin-top:13px}
+    .project-info{padding:20px}.project-info h3{margin:0 0 5px}.project-info p{margin:0;color:var(--muted);font-size:.92rem}
+    .tag{display:inline-block;margin-top:14px;padding:5px 9px;border-radius:99px;background:rgba(91,140,255,.12);color:#a9c3ff;font-size:.75rem}
+    .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:55px;align-items:center}
+    .about-panel{border:1px solid var(--line);border-radius:22px;padding:30px;background:linear-gradient(145deg,#17152d,#0e1020)}
+    .stat{display:flex;justify-content:space-between;gap:20px;padding:17px 0;border-bottom:1px solid var(--line)}
+    .stat:last-child{border:0}.stat span{color:var(--muted)}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:step}
+    .step{padding:24px;border-top:1px solid rgba(155,108,255,.55);background:rgba(255,255,255,.025);border-radius:0 0 16px 16px}
+    .num{font-size:.8rem;color:#b69aff;font-weight:800;letter-spacing:.12em}
+    .step h3{margin:12px 0 7px}.step p{color:var(--muted);margin:0}
+    .contact{background:radial-gradient(ellipse at 50% 100%,rgba(94,67,196,.18),transparent 60%)}
+    .contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:55px;align-items:start}
+    .contact-note{color:var(--muted)}
+    form{background:rgba(19,19,36,.9);border:1px solid var(--line);border-radius:22px;padding:28px}
+    .field{margin-bottom:17px}.field label{display:block;font-size:.88rem;font-weight:650;margin-bottom:7px}
+    input,textarea,select{width:100%;border:1px solid var(--line);background:#0b0b17;color:white;border-radius:11px;padding:13px 14px;outline:none}
+    input:focus,textarea:focus,select:focus{border-color:#9b6cff;box-shadow:0 0 0 3px rgba(155,108,255,.13)}
+    textarea{min-height:125px;resize:vertical}
+    .form-msg{min-height:24px;color:#b9a6ff;font-size:.9rem;margin-top:12px}
+    .form-disclaimer{color:#77758e;font-size:.78rem;margin:12px 0 0}
+    footer{border-top:1px solid var(--line);padding:27px 0;color:#8e8ba8;font-size:.88rem}
+    .foot{display:flex;justify-content:space-between;gap:20px;align-items:center}
+    .footlinks{display:flex;gap:20px}
+    @media(max-width:850px){
+      .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:30px}
+      .visual{min-height:350px}.cards,.projects,.steps{grid-template-columns:1fr 1fr}
+      .fc1{left:5%}.fc2{right:5%}
+    }
+    @media(max-width:620px){
+      .wrap{width:min(var(--max),calc(100% - 30px))}
+      .navin{height:66px}.menu{display:block}
+      .links{display:none;position:absolute;top:66px;left:0;right:0;padding:18px 22px 22px;background:#0b0b16;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:17px}
+      .links.open{display:flex}.links .btn{text-align:center}
+      .hero{padding:78px 0 55px}.visual{min-height:310px}.orb{width:245px}
+      .fc1{top:12px}.fc2{bottom:15px}
+      section{padding:65px 0}.cards,.projects,.steps{grid-template-columns:1fr}
+      .foot{align-items:flex-start;flex-direction:column}.footlinks{flex-wrap:wrap}
+      form{padding:20px}
+    }
+
+    /* Urban Plate portfolio preview */
+    .restaurant-art{background:radial-gradient(circle at 75% 20%,rgba(232,163,75,.22),transparent 38%),linear-gradient(135deg,#21170f,#111018 70%)}
+    .restaurant-preview{position:relative;width:88%;max-width:330px;padding:13px 14px 15px;border:1px solid rgba(255,255,255,.2);border-radius:13px;background:#171512;box-shadow:0 18px 38px #0009}
+    .restaurant-top{display:flex;justify-content:space-between;align-items:center;color:#f4e9d8;font-size:.55rem;letter-spacing:.08em;font-weight:800}
+    .restaurant-top span{color:#e8a34b;font-size:.48rem}
+    .restaurant-copy{padding:17px 0 13px}
+    .restaurant-copy small{color:#e8a34b;font-size:.48rem;letter-spacing:.16em}
+    .restaurant-copy strong{display:block;color:#fff3df;font-family:Georgia,serif;font-size:1.12rem;line-height:1.05;margin:7px 0}
+    .restaurant-copy em{display:block;color:#c6b8a6;font-size:.48rem;font-style:normal}
+    .restaurant-food{height:54px;border-radius:7px;background:linear-gradient(120deg,#3b2115,#9c592d 45%,#e3a65d 46%,#61331d 72%,#251711);position:relative;overflow:hidden}
+    .restaurant-food:after{content:"";position:absolute;width:70px;height:70px;border-radius:50%;border:7px solid rgba(255,236,203,.72);left:38%;top:-16px;box-shadow:0 0 0 5px rgba(20,12,8,.4)}
+    .restaurant-label{display:flex;justify-content:space-between;align-items:center;margin-top:10px;color:#f4e9d8;font-size:.48rem}
+    .restaurant-label b{background:#e8a34b;color:#17110b;border-radius:20px;padding:4px 8px;font-size:.45rem}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap navin">
+      <a class="brand" href="#home" aria-label="DEXTRO home">DEX<span>T</span>RO</a>
+      <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+      <nav class="links" id="navLinks" aria-label="Main navigation">
+        <a href="#services">Services</a><a href="#work">Work</a><a href="#about">About</a><a href="#contact" class="btn">Let's talk ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Creative technology studio</div>
+          <h1>Digital ideas.<br><span class="gradient">Real momentum.</span></h1>
+          <p class="lead">DEXTRO helps ambitious small businesses show up online with thoughtful design, modern websites and practical AI-powered solutions.</p>
+          <div class="actions"><a class="btn" href="#contact">Start a project <span>↗</span></a><a class="btn ghost" href="#services">Explore services</a></div>
+          <p class="micro">Clear thinking · Useful technology · Design that works</p>
+        </div>
+        <div class="visual" aria-label="Abstract purple and blue 3D orb illustration">
+          <div class="orb"></div>
+          <div class="float-card fc1"><strong>Design × Tech</strong><small>Built around your goals</small></div>
+          <div class="float-card fc2"><strong>Ideas into action</strong><small>One smart step at a time</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">What we do</div><h2>Small details. <span class="gradient">Big difference.</span></h2><p class="sub">Practical digital services to help your business look sharp, communicate clearly and work smarter.</p></div>
+        <div class="cards">
+          <article class="card"><div class="icon">✳</div><h3>Web design</h3><p>Responsive, clean websites that explain what you do and make it easy for people to take the next step.</p></article>
+          <article class="card"><div class="icon">▧</div><h3>Social media creative</h3><p>On-brand posts, promotional graphics and content ideas that help your business stay consistent online.</p></article>
+          <article class="card"><div class="icon">⌘</div><h3>Practical AI solutions</h3><p>Explore useful AI workflows for drafting content, organizing information and reducing repetitive work.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="work" id="work">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">Selected concepts</div><h2>A glimpse of <span class="gradient">what's possible.</span></h2><p class="sub">These are illustrative concept projects showing the kind of work DEXTRO can create—not client case studies.</p></div>
+        <div class="projects">
+          <article class="project"><div class="project-art"><div class="mock"><div class="mock-bar"></div><div class="mock-line"></div><div class="mock-line short"></div><div class="mock-button"></div></div></div><div class="project-info"><h3>Local business website</h3><p>A focused online home for a neighborhood brand.</p><span class="tag">Website concept</span></div></article>
+          <article class="project"><div class="project-art"><div class="mock"><div class="mock-bar" style="width:55%"></div><div class="mock-line short"></div><div class="mock-line"></div><div class="mock-line short"></div><div class="mock-button"></div></div></div><div class="project-info"><h3>Social launch kit</h3><p>A coordinated set of campaign graphics and captions.</p><span class="tag">Social creative concept</span></div></article>
+          <article class="project"><div class="project-art"><div class="mock"><div class="mock-bar" style="width:25%"></div><div class="mock-line"></div><div class="mock-line short"></div><div class="mock-line"></div><div class="mock-button"></div></div></div><div class="project-info"><h3>AI workflow starter</h3><p>A simple content workflow designed to save time.</p><span class="tag">AI concept</span></div></article>
+          <article class="project"><div class="project-art restaurant-art"><div class="restaurant-preview"><div class="restaurant-top">THE URBAN PLATE <span>MENU　 ABOUT</span></div><div class="restaurant-copy"><small>GOOD FOOD. GOOD MOOD.</small><strong>Discover the taste<br>of happiness.</strong><em>Fresh flavours, made with love.</em></div><div class="restaurant-food"></div><div class="restaurant-label"><span>Fresh • Local • Made daily</span><b>EXPLORE MENU</b></div></div></div><div class="project-info"><h3>THE URBAN PLATE</h3><p>A modern restaurant website concept with a bold hero section, menu and about sections.</p><span class="tag">HTML · CSS · JavaScript</span><span class="tag">Independent concept · In progress</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap about-grid">
+        <div><div class="kicker">Why DEXTRO</div><h2>Technology should make things <span class="gradient">simpler.</span></h2><p class="sub">We believe good digital work starts by understanding the problem—not by adding complexity. DEXTRO is built around clear communication, thoughtful execution and steady improvement.</p><div class="actions"><a class="btn ghost" href="#contact">Tell us what you're building ↗</a></div></div>
+        <div class="about-panel">
+          <div class="stat"><strong>People first</strong><span>Useful over flashy</span></div>
+          <div class="stat"><strong>Mobile ready</strong><span>Designed for every screen</span></div>
+          <div class="stat"><strong>Practical AI</strong><span>Purposeful, human-reviewed</span></div>
+          <div class="stat"><strong>Clear process</strong><span>Scope before starting</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">How it works</div><h2>From first thought to <span class="gradient">finished project.</span></h2></div>
+        <div class="steps">
+          <article class="step"><div class="num">01 / DISCOVER</div><h3>Share your goal</h3><p>Tell us about your business, audience and what you want to improve.</p></article>
+          <article class="step"><div class="num">02 / PLAN</div><h3>Agree the scope</h3><p>We outline the deliverables, timeline and price before any work begins.</p></article>
+          <article class="step"><div class="num">03 / CREATE</div><h3>Make it happen</h3><p>Review the work, share feedback and move toward a polished result.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap contact-grid">
+        <div><div class="kicker">Get in touch</div><h2>Have an idea?<br><span class="gradient">Let's shape it.</span></h2><p class="contact-note">Tell us a little about what you need. We'll use the details to understand your project and plan a useful next step.</p><p class="contact-note"><strong>Good to know:</strong> Please don't include passwords, payment details or other sensitive information in this form.</p></div>
+        <form id="contactForm">
+          <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" required maxlength="80" placeholder="Name"></div>
+          <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="120" placeholder="you@example.com"></div>
+          <div class="field"><label for="service">What are you interested in?</label><select id="service" name="service" required><option value="">Choose a service</option><option>Website design</option><option>Social media creative</option><option>AI solutions</option><option>Not sure yet</option></select></div>
+          <div class="field"><label for="message">Tell us about your project</label><textarea id="message" name="message" required maxlength="1500" placeholder="A few details about your idea..."></textarea></div>
+          <button class="btn" type="submit">Send enquiry ↗</button>
+          <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+          <p class="form-disclaimer">Demo form: this page does not send or store submissions. Connect a trusted form service or backend before publishing it for real enquiries.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap foot"><a class="brand" href="#home">DEX<span>T</span>RO</a><span>© <span id="year"></span> DEXTRO. Built with purpose.</span><div class="footlinks"><a href="#services">Services</a><a href="#contact">Contact</a></div></div></footer>
+  <script>
+    const menuBtn=document.getElementById('menuBtn');
+    const navLinks=document.getElementById('navLinks');
+    menuBtn.addEventListener('click',()=>{
+      const open=navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded',String(open));
+    });
+    navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+      navLinks.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');
+    }));
+    document.getElementById('year').textContent=new Date().getFullYear();
+    document.getElementById('contactForm').addEventListener('submit',e=>{
+      e.preventDefault();
+      document.getElementById('formMsg').textContent='Thanks! This demo form is working locally, but submissions are not sent. Connect a form backend to receive enquiries.';
+    });
+  </script>
+</body>
+</html>
